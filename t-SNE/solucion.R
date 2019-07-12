@@ -33,7 +33,7 @@ names(colors) <- unique(my_data$V1)
 
 #Ejecutamos el algoritmo para los datos de MNIST, suprimiendo la columna de las etiquetas
 tsne <- Rtsne(my_data[,-1], dims = 2, verbose=TRUE, max_iter = 500)
-
+#-1 es que quitamos la colummna ya hecha. 
 
 #Hacemos un plot de los datos "vacio"
 plot(tsne$Y, t='n', main="2D t-distributed Stochastic Neighbor Embedding para el MNIST dataset",
