@@ -77,6 +77,8 @@ grid.arrange(plot_1, plot_2, plot_3, plot_4, nrow = 2)
 #---------------- Inicio: Numero optimo de clusters (Elbow method) --------------------#
 
 
+# Use la función map_dbl para aplicar la función que tiene en el código que calcula los wss del k-means y pruebe con diferentes centros. Realice el mejor plot que le permita visualizar los resultados para poder aplicar el método.
+
 set.seed(123)
 
 # function to compute total within-cluster sum of square 
@@ -84,26 +86,33 @@ wss <- function(k) {
   kmeans(my_data, k, nstart = 10 )$tot.withinss
 }
 
-# Compute and plot wss for k = NULL to k = NULL
-k.values <- NULL
+# Compute and plot wss for k = 1 to k = 15. K = número de centroides, de clusters. 
+k.values <- 1:15
 
-# extract wss for NULL clusters
-wss_values <- NULL(k.values, wss)
+# extract wss for 1-15 clusters
+wss_values <- map(k.values, wss)
 
-plot(NULL)
+plot(k.values, wss_values,
+     type="b", pch = 19, frame = FALSE, 
+     xlab="Number of clusters K",
+     ylab="Total within-clusters sum of squares")
 
+# En nuestro caso, el codo está en cuatro (hay como tres pendientes, de 1-2, 2-4 y 4-15)
 
 #Manera mas rapida
 set.seed(123)
 
+# También hay una función que te lo hace automático. 
 fviz_nbclust(my_data, kmeans, method = "wss")
 
 
 #---------------- Fin: Numero optimo de clusters (Elbow method) --------------------#
 
-
+clusters_elbow<-4 #No cogemos el 2 porque nos salía un 45% el valor de explicación, 
 
 #---------------- Inicio: Numero optimo de clusters (Average Silhouette Method) --------------------#
+
+# Realice el mismo procedimiento de la pregunta 7 para aplicar silhoutte method.
 
 
 # function to compute average silhouette for k clusters
@@ -114,13 +123,15 @@ avg_sil <- function(k) {
 }
 
 # Compute and plot wss for k = NULL to k = NULL
-k.values <- NULL
+k.values <- 2:15
 
 # extract avg silhouette for 2-15 clusters
-avg_sil_values <- NULL(NULL, NULL)
+avg_sil_values <- map(k.values, avg_sil)
 
-plot(NULL,
-     xlim=c(0,15))
+plot(k.values, avg_sil_values,
+     type="b", pch = 19, frame = FALSE, 
+     xlab="Number of clusters K",
+     ylab="Total within-clusters sum of squares")
 
 
 #Manera automatica
@@ -129,29 +140,32 @@ fviz_nbclust(my_data, kmeans, method = "silhouette")
 
 #---------------- Fin: Numero optimo de clusters (Average Silhouette Method) --------------------#
 
-
+clusters_silhouette<-4 # nos entraba la duda del 7
 
 
 
 #---------------- Inicio: Numero optimo de clusters (Gap Statistic Method) --------------------#
+#Utilice la función para el método gap statistics y analice los resultados identificando número óptimo de clusters.
+#Ajuste su k-means final.
+# Tarea: cree una función para evaluar nuevas observaciones.
 
 
 # compute gap statistic
 set.seed(123)
-gap_stat <- clusGap(NULL, FUN = NULL, nstart = NULL,
-                    K.max = NULL, B = NULL)
+gap_stat <- clusGap(my_data, FUN = kmeans, nstart = 25,
+                    K.max = 10, B = 50)
 # Print the result
-print(gap_stat, method = "firstmax")
+print(gap_stat, method = "firstmax")  # Esto sí arroja un  --> Number of clusters (method 'firstmax'): 4
 
 
-#Manera automatica
+#Ploot
 fviz_gap_stat(gap_stat)
 
 
 #---------------- Fin: Numero optimo de clusters (Gap Statistic Method) --------------------#
 
 
-
+4
 
 
 
