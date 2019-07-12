@@ -171,13 +171,14 @@ fviz_gap_stat(gap_stat)
 
 #---------------- Inicio: Resultados finales --------------------#
 
+
 set.seed(123)
-my_final_kmeans <- NULL
-print(NULL)
+my_final_kmeans <- kmeans(my_data, 4, nstart = 10)
+print(my_final_kmeans)
 
-fviz_cluster(NULL, data = NULL)
+fviz_cluster(my_final_kmeans, data = my_data)
 
-
+#centros de cada cluster
 USArrests  %>%
   mutate(Cluster = my_final_kmeans$cluster) %>%
   group_by(Cluster) %>%
@@ -192,19 +193,46 @@ USArrests  %>%
 
 #---------------- Inicio: Evaluar una nueva observacion --------------------#
 
+# Con cada observación no voy a reentrenar el modelo, eso me cambiaría todo. 
+#Una ve entrenado, una nueva observación lo queme hacees ponerlo en el grupo
+#con centroid más cercano
 new_obs<-c(11,250,60,22)
 
 
-#TAREA: cree una funcion para evaluar nuevas observaciones.
+
 
 
 
 
 #---------------- Fin: Evaluar una nueva observacion --------------------#
 
+#TAREA: cree una funcion para evaluar nuevas observaciones.
 
+new_obs<-c(11,250,60,22)
 
+#OJO: TENEMOS QUE NORMALIZAR ESA VALOR.  rESTARLE LA MEDIA Y DIVIRLO ENTRE LA DESVIACÍON.
 
+classify_kmeans<-function(new_obs,your_kmeans){
+  
+  my_dist<-c()
+  for(i in 1:nrow(your_kmeans$centers)){
+    
+    dist_temp<-stats::dist(rbind(as.numeric(your_kmeans$centers[i,]),new_obs),method = "euclidean")
+    my_dist<-c(my_dist,dist_temp)
+    
+  }
+  
+  result<-which(my_dist==min(my_dist))
+  
+  print(paste("La nueva observaci\u00f3n pertenece al cluster",result,
+              "donde estan las observaciones como:",
+              paste0(names(which(my_final_kmeans$cluster==result))[1:6],collapse = ", ")))
+  return(result)
+  
+}
+
+my_class<-classify_kmeans(new_obs ,my_final_kmeans)
+my_class
 
 
 
