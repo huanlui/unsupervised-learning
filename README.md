@@ -5,14 +5,14 @@ En unsupervised learning no tenemos variable respuesta.
 Necesitamos agrupar registros que se parecen entre sí, aunque no me vaya a decir qué son realmente. 
 
 ## Tipos
-**Clustering**
+**Modelos para hacer clustering**
 
 * K-means.
 * Hierarchical Clustering.
 * Probabilistic Clustering.
 
-**Data Compression**
-
+**Algoritmos de reducción de dimensionalidad**
+¡No son para hacer clustering, para eso están después los de arriba!
 * Principal Component Analysis.
 * Singular Value Decomposition (u otras factorizaciones de matrices).
 * t-Distributed Stochastic Neighbor Embedding. 
