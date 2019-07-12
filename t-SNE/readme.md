@@ -1,4 +1,4 @@
-# 
+# t-distributed Stochastic Neighbor Embedding
 
 Mucho más complicado pero mucho más potente que PCA. 
 
