@@ -21,3 +21,7 @@ Se hacen una serie de cálculos matemáticos que podemos ver en el PPTX.
 ## PCA: Desventajas
 
 Asume linealidad en los datos, por lo que no detecta cuando hay relaciones no lineales entre variables. 
+
+## Tips
+
+^ Mayor desviación estándar de una variable implica mayor explicación. Explica mejor el modelo. 
