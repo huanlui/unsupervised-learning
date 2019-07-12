@@ -9,5 +9,6 @@ Mucho más complicado pero mucho más potente que PCA.
 
 ![comparación](https://miro.medium.com/max/736/1*LeOHKmUFha2r3QJ7riR1zg.png)
 
-A fondo: https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b
+A fondo: https://lvdmaaten.github.io/
+Más ligero: https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b
 
