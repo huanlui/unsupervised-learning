@@ -18,9 +18,13 @@ rm(list=ls())
 my_data<-USArrests
 
 #Verificamos si el dataset tiene NA's
+# Recordemos que sapply aplica la función que digamos a cada columna de mi matriz. Por ejemplo:
+head(sapply(my_data,mean))
+head(sapply(my_data,function(x) mean(x)/2))
+# En este caso, aplicamos la función any que me dice si alguno cumple algo, en este caso su is.na. 
 sapply(my_data,function(x) any(is.na(x)))
 
-#No queremos que el algoritmo dependa de una unidad variable arbitraria
+#No queremos que el algoritmo dependa de una unidad variable arbitraria. ES decir, queremos hacer scaling
 my_data<-scale(my_data)
 head(my_data)
 
