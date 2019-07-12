@@ -18,21 +18,25 @@ rm(list=ls())
 
 
 #Otra manera de importar el dataset
-knitr::kable(NULL)
+knitr::kable(mtcars)
 
 # Siempre es bueno echarle un vistazo al dataset
-summary(NULL)
+summary(mtcars)
 
 
 
 # cor = TRUE indica si debe realizarse con matriz de correlacion o matriz de covarianzas.
-pcaCars <- princomp(NULL, cor = TRUE)
+# Henry dice que según vaya el viento ,no sabía saber qué matriz coger.
+pcaCars <- princomp(mtcars, cor = TRUE)
+
+pcaCars # aquí vemos las cpommentes ordenadas por standard deviation. MAyor std deviation, matyor explicacíon
 
 # que objetos tenemos en pcaCars
 names(pcaCars)
 
 # "score" contiene las componentes principales
-pcaCars$NULL
+head(pcaCars$scores) # cada valor es la combinación lineal de los autovectores por el valor que tenía esa variable
+#con ese deberíamos hacer el modelo, pero con cuáles? La que más me explique
 
 # proporcion de varianza explicada por cada componente
 summary(NULL)
@@ -51,20 +55,20 @@ plot(NULL, type = "l")
 #Empezamos la parte que nos interesa, como podemos construir un clustering con solo dos variables?
 
 # cluster cars
-carsHC <- hclust(NULL, method = "ward.D2") #ward.D2: https://es.wikipedia.org/wiki/M%C3%A9todo_de_Ward
+carsHC <- hclust(dist(pcaCars$scores[,1:2]), method = "ward.D2") #ward.D2: https://es.wikipedia.org/wiki/M%C3%A9todo_de_Ward
 
 # dendrogram
-plot(NULL)
+plot(carsHC)
 
 
 # cut the dendrogram into 3 clusters
-carsClusters <- cutree(carsHC, k = NULL)
+carsClusters <- cutree(carsHC, k = 3)
 
 
 # Visualizamos el dendograma con los rectangulos de cada cluster
-plot(NULL)
-rect.hclust(NULL, k=NULL, border="red")
-#es este el corte que esperabas?
+plot(carsHC)
+rect.hclust(carsHC, k=3, border="red")
+
 
 # anadimos la etiqueta de cluster
 carsDf <- data.frame(pcaCars$scores, "cluster" = factor(carsClusters))
@@ -72,7 +76,7 @@ carsDf
 
 
 # Visualizar es siempre la mejor herramienta
-ggplot(carsDf,aes(x=NULL, y=NULL)) +
+ggplot(carsDf,aes(x=Comp.1, y=Comp.2)) +
   geom_text_repel(aes(label = rownames(carsDf))) +
   theme_classic() +
   geom_hline(yintercept = 0, color = "gray70") +
@@ -100,13 +104,13 @@ my_data<-as.data.frame(pcaCars$score)[,1:2]
 names(my_data)<-c("pca1","pca2")
 
 # "entrenamos" el kmenas
-my_kmeans<-kmeans(NULL,centers=NULL,nstart=10)
+my_kmeans<-kmeans(my_data,centers=3,nstart=10)
 
 # Visualizar siempre sera de gran ayuda
-fviz_cluster(NULL, geom = "point", data = my_data) + ggtitle("k = NULL")
+fviz_cluster(my_kmeans, geom = "point", data = my_data) + ggtitle("k = 3")
 
 # Ahora con plotly, mas chulo :)
-plot_ly(NULL, x=~NULL,y=~NULL,type = "scatter",color = NULL,colors="Set1") %>%
+plot_ly(my_data, x=~pca1,y=~pca2,type = "scatter",color = factor(my_kmeans$cluster),colors="Set1") %>%
   add_markers(p = )
 
 
@@ -115,16 +119,16 @@ plot_ly(NULL, x=~NULL,y=~NULL,type = "scatter",color = NULL,colors="Set1") %>%
 #------------ que ocurre en 3 dimensiones? ---------------------#
 
 #seleccionamos las tres primeras componentes
-my_data<-as.data.frame(pcaCars$score)[,NULL]
-names(my_data)<-c("NULL","NULL","NULL")
+my_data<-as.data.frame(pcaCars$score)[,1:3]
+names(my_data)<-c("pca1","pca2","pca3")
 
 
 # "entrenamos" el kmeans
-my_kmeans<-kmeans(NULL,centers=3,nstart=10)
+my_kmeans<-kmeans(my_data,centers=3,nstart=10)
 
 
 #Visualizamos con plotly
-plot_ly(my_data, x=~NULL,y=~NULL,z=~NULL,color = factor(my_kmeans$cluster),colors="Set1") %>%
+plot_ly(my_data, x=~pca1,y=~pca2,z=~pca3,color = factor(my_kmeans$cluster),colors="Set1") %>%
   add_markers() %>%
   plotly::layout(scene = list(xaxis = list(title = 'PC1'),
                               yaxis = list(title = 'PC2'),
