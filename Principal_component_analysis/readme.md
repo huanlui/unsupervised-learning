@@ -9,6 +9,6 @@ Usas una matriz de cambio de base para reducir el número de componentes (variab
 
 * A medida que aumenta el número de variables, el modelo se vuelve más complejo.
 * Cuanto mayor sea el número de variables, más posibilidades hay de que tengamos overfitting.
-* Un modelo de machine learning que está entrenado con un gran número de variables, depende cada vez más de los datos con los que fue entrenado.
+* Un modelo de machine learning que está entrenado con un gran número de variables, depende cada vez más de los datos con los que fue entrenado. Necesitaremos además más filas para entranar si tenemos muchas columnas. 
 * Menos variables en nuestro conjunto de entrenamiento, implican menos suposiciones que nuestro modelo tendrá que hacer.
 
