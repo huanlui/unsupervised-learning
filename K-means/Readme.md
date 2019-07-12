@@ -22,6 +22,39 @@ Pero claro, para minimizar eso podría hacer 100 cluster si tengo 100 muestras.
 
 ![kmeans](media/kmeans.PNG)
 
+## ¿Cómo determinar el número de clusters?
+
+### Elbow Method
+
+El total within-cluster sum of square (wss) cuantifica qué tan compacto es el clustering y queremos hacerlo tan pequeño como sea possible. Por tanto Podemos seguir el siguiente algoritmo para definir el número óptimo de clusters:
+
+* Calcula el algoritmo de clustering (por ejemplo, k-means clustering) para diferentes valores de k.
+* Para cada k, calcula el total within-cluster sum of square (wss)
+* Realiza un plot de la curva wss respect al número de clusters k.
+* La ubicación de una pequeña curva (un codo, elbow) en el plot, es generalmente considerada como un indcador apropiado del número de clusters.
+
+![codo](https://www.researchgate.net/profile/Chirag_Deb/publication/320986519/figure/fig8/AS:560163938422791@1510564898246/Result-of-the-elbow-method-to-determine-optimum-number-of-clusters.png)
+
+### Average Silhouette Method
+
+* En resumen, el average silhouette method se enfoca en medir la calidad de un clustering. Esto es, determina qué tan bien se encuentra cada objeto dentro de su grupo.
+* Un gran average silhouette indica un buen clustering
+* El average silhouette method calcula la silueta promedio de observaciones para diferentes valores de k.
+* El número óptimo de clusters k es el que maximiza el average silhouette sobre un rango de posibles valores.
+* Se define silhouette como:
+
+![siluhouette](https://scikit-learn.org/stable/_images/sphx_glr_plot_kmeans_silhouette_analysis_004.png)
+
+https://en.wikipedia.org/wiki/Silhouette_(clustering)
+
+### Gap Statistic Method
+
+* El Gap Statistic Method ha sido publicado por R. Tibshirani, G. Walther y T. Hastie (Standford University, 2001). Podría aplicarse a otros métodos de clustering.
+* Involucra simulaciones de Monte Carlo.
+* Realiza Bootstraping para generar B copias del dataset de referencia.
+* Es el más fundamentado matemáticamente.
+
+
 
 # Ejercicio K-means Clustering.
 
@@ -40,4 +73,5 @@ Las tareas a desarrollar son las siguientes:
 9. Utilice la función  para el método gap statistics y analice los resultados identificando número óptimo de clusters.
 10. Ajuste su k-means final.
 11. Tarea: cree una función para evaluar nuevas observaciones.
+
 
