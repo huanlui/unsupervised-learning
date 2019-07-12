@@ -24,4 +24,4 @@ Asume linealidad en los datos, por lo que no detecta cuando hay relaciones no li
 
 ## Tips
 
-^ Mayor desviación estándar de una variable implica mayor explicación. Explica mejor el modelo. 
+* Mayor desviación estándar de una variable implica mayor explicación. Explica mejor el modelo. 
