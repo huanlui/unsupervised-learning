@@ -94,6 +94,8 @@ El total within-cluster sum of square (wss) cuantifica qué tan compacto es el c
 * El número óptimo de clusters k es el que maximiza el average silhouette sobre un rango de posibles valores.
 * Se define silhouette como:
 
+![siluhouette](https://scikit-learn.org/stable/_images/sphx_glr_plot_kmeans_silhouette_analysis_004.png)
+
 https://en.wikipedia.org/wiki/Silhouette_(clustering)
 
 ### Gap Statistic Method
