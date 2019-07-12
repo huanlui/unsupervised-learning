@@ -13,6 +13,7 @@ Necesitamos agrupar registros que se parecen entre sí, aunque no me vaya a deci
 
 **Algoritmos de reducción de dimensionalidad**
 ¡No son para hacer clustering, para eso están después los de arriba!
+Nos convierten un datset en otro. 
 * Principal Component Analysis.
 * Singular Value Decomposition (u otras factorizaciones de matrices).
 * t-Distributed Stochastic Neighbor Embedding. 
