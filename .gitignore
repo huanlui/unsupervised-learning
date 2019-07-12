@@ -1,5 +1,7 @@
 #Others (JL)
 desktop.ini
+~*.pptx
+~*.docx
 
 # History files
 .Rhistory
