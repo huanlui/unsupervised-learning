@@ -1,5 +1,7 @@
 # Hierachical Clustering
 
+Este método Henry no lo ha usado en la vida real. 
+
 Una especie de árbol que te va diciendo grupos y subgrupos, etc. 
 
 En Hierarchical Clustering, se clasifica los objetos en una jerarquía similar a un diagrama en forma de árbol que se denomina dendrograma. La distancia de división o unión (Split o merge) (llamada Height o altura) se muestra en el eje y del dendrograma. Ejemplo:
@@ -11,6 +13,7 @@ Algoritmo:
 ![algotirmo](https://www.brandidea.com/images/datascience/hierarchicalclustering.jpg)
 
 Ver Linkage Methods en presentación
+
 
 ## Ejercicio
 
