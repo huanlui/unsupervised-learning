@@ -88,20 +88,20 @@ El total within-cluster sum of square (wss) cuantifica qué tan compacto es el c
 
 ### Average Silhouette Method
 
-En resumen, el average silhouette method se enfoca en medir la calidad de un clustering. Esto es, determina qué tan bien se encuentra cada objeto dentro de su grupo.
-Un gran average silhouette indica un buen clustering
-El average silhouette method calcula la silueta promedio de observaciones para diferentes valores de k.
-El número óptimo de clusters k es el que maximiza el average silhouette sobre un rango de posibles valores.
-Se define silhouette como:
+* En resumen, el average silhouette method se enfoca en medir la calidad de un clustering. Esto es, determina qué tan bien se encuentra cada objeto dentro de su grupo.
+* Un gran average silhouette indica un buen clustering
+* El average silhouette method calcula la silueta promedio de observaciones para diferentes valores de k.
+* El número óptimo de clusters k es el que maximiza el average silhouette sobre un rango de posibles valores.
+* Se define silhouette como:
 
 https://en.wikipedia.org/wiki/Silhouette_(clustering)
 
 ### Gap Statistic Method
 
-El Gap Statistic Method ha sido publicado por R. Tibshirani, G. Walther y T. Hastie (Standford University, 2001). Podría aplicarse a otros métodos de clustering.
-Involucra simulaciones de Monte Carlo.
-Realiza Bootstraping para generar B copias del dataset de referencia.
-Es el más fundamentado matemáticamente.
+* El Gap Statistic Method ha sido publicado por R. Tibshirani, G. Walther y T. Hastie (Standford University, 2001). Podría aplicarse a otros métodos de clustering.
+* Involucra simulaciones de Monte Carlo.
+* Realiza Bootstraping para generar B copias del dataset de referencia.
+* Es el más fundamentado matemáticamente.
 
 ## Hierarchical Clustering
 
