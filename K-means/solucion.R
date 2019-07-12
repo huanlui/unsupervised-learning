@@ -25,11 +25,12 @@ head(sapply(my_data,function(x) mean(x)/2))
 sapply(my_data,function(x) any(is.na(x)))
 
 #No queremos que el algoritmo dependa de una unidad variable arbitraria. ES decir, queremos hacer scaling
-my_data<-scale(my_data)
+my_data<-scale(my_data) 
 head(my_data)
 
 #veamos las distancias entre cada estado
 distance <- get_dist(my_data)
+# Rojo: más distancia: Azul oscuro, menos distancia. 
 fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
 
 #"Entrenamos" el kmeans

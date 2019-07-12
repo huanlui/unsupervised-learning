@@ -11,33 +11,41 @@
 #---------------------------------------------------------------------------------------------------#
 
 
-
 rm(list=ls())
 
 #Leemos los datos
-my_data<-NULL 
+my_data<-USArrests
 
+# 1) Verifique si el dataset contiene NA’s.
 #Verificamos si el dataset tiene NA's
+# Recordemos que sapply aplica la función que digamos a cada columna de mi matriz. Por ejemplo:
+head(sapply(my_data,mean))
+head(sapply(my_data,function(x) mean(x)/2))
+# En este caso, aplicamos la función any que me dice si alguno cumple algo, en este caso su is.na. 
 sapply(my_data,function(x) any(is.na(x)))
 
-#No queremos que el algoritmo dependa de una unidad variable arbitraria
-my_data<- NULL(my_data)
-head(NULL)
+#No queremos que el algoritmo dependa de una unidad variable arbitraria. ES decir, queremos hacer scaling
+my_data<-scale(my_data) 
+head(my_data)
 
 #veamos las distancias entre cada estado
-distance <- NULL
-NULL(NULL, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+distance <- get_dist(my_data)
+# Rojo: más distancia: Azul oscuro, menos distancia. 
+fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
 
 #"Entrenamos" el kmeans
-my_kmeans_2<-kmeans(NULL,centers = NULL,nstart = NULL)
+# Lo entrenamos usando dos centros (es decir, dos grupos)
+# Hacemos 10 intentos y me quedo con la mejor de las inicialiaciones. 
+my_kmeans_2<-kmeans(my_data,centers = 2,nstart = 10)
 str(my_kmeans_2)
 my_kmeans_2
+my_kmeans_2&centers
 
-
-#Visualizamos el cluster
+#Visualizamos el cluster: Tengo 4 variables, pero para respresnetarlo en dos tengo que hacer dos opciones. 
+#Veamos dos librería distinta:
+# Este te coge las componente principales (hace un cambio de base)
 fviz_cluster(my_kmeans_2, data = my_data)
-
-
+#Este coge las dos variables m´sa importante
 ggplot(aes(UrbanPop, Murder, color = factor(my_kmeans_2$cluster),
            label = row.names(USArrests)),
        data = as.data.frame(my_data)) +
@@ -47,18 +55,20 @@ ggplot(aes(UrbanPop, Murder, color = factor(my_kmeans_2$cluster),
 #--------------------- Inicio: Visualizacion ------------------------------#
 
 #"entrenamos" otros kmeans
-my_kmeans_3 <- kmeans(NULL, centers = NULL, nstart = 10)
-
+my_kmeans_3 <- kmeans(my_data, centers = 3, nstart = 10)
+my_kmeans_4 <- kmeans(my_data, centers = 4, nstart = 10)
+my_kmeans_5 <- kmeans(my_data, centers = 5, nstart = 10)
 
 # plots para comparar
-plot_1 <- fviz_cluster(NULL, geom = "point", data = NULL) + ggtitle(NULL)
-plot_2 <- fviz_cluster(NULL, geom = "point",  data = NULL) + ggtitle(NULL)
-plot_3 <- fviz_cluster(NULL, geom = "point",  data = NULL) + ggtitle(NULL)
-plot_4 <- fviz_cluster(NULL, geom = "point",  data = NULL) + ggtitle(NULL)
+plot_1 <- fviz_cluster(my_kmeans_2, geom = "point", data = my_data) + ggtitle("2 groups")
+plot_2 <- fviz_cluster(my_kmeans_3, geom = "point",  data = my_data) + ggtitle("3 groups")
+plot_3 <- fviz_cluster(my_kmeans_4, geom = "point",  data = my_data) + ggtitle("4 groups")
+plot_4 <- fviz_cluster(my_kmeans_5, geom = "point",  data = my_data) + ggtitle("5 groups")
 
 
-grid.arrange(plot_1, plot_2, plot_3, plot_4, nrow = NULL)
+grid.arrange(plot_1, plot_2, plot_3, plot_4, nrow = 2)
 
+# Con 5 centros  no me quedo, porque se entremezclan
 
 #--------------------- Fin: Visualizacion ------------------------------#
 
