@@ -2,6 +2,7 @@
 
 Mucho más complicado pero mucho más potente que PCA. 
 
+* Usa gradient-descent para reducir de muchas dimensions a 2 o 3. No más. 
 * Al igual que el PCA, es una técnica de proyección, o reducción de dimensión, que se aplica con la intención de visualizar N variables en 2.
 * Uno de los resultados de t-SNE es una matriz de dos dimensiones (puede ser de tres también), donde cada observación (fila) representa un dato de entrada. Luego podemos aplicar un clustering y agrupar los casos según su distancia en este nuevo mapa de 2 dimensiones. 
 * t-SNE mapea los datos multidimensionales a un espacio dimensional inferior.
