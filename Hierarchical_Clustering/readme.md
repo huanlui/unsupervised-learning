@@ -9,3 +9,5 @@ En Hierarchical Clustering, se clasifica los objetos en una jerarquía similar a
 Algoritmo:
 
 ![algotirmo](https://www.brandidea.com/images/datascience/hierarchicalclustering.jpg)
+
+Ver Linkage Methods en presentación
