@@ -60,13 +60,9 @@ plot_ly(data_to_plot, x=~V1, y=~V2, z=~V3, color= as.factor(my_labels), colors =
 
 
 
-#Tarea: realizar un algoritmo de clustering que realice un agrupamiento como el de la imagen
-
-
-
 
 #No ejecutar, a menos que se desee hacer plot de los numeros
-row<-4
+row<-2
 COLORS <- c("white", "black")
 CUSTOM_COLORS <- colorRampPalette(colors = COLORS)
 CUSTOM_COLORS_PLOT <- colorRampPalette(brewer.pal(10, "Set3"))
@@ -77,6 +73,16 @@ z <- z[, 16:1]  ##right side up
 par(mfrow = c(1, 1), pty = "s", mar = c(1, 1, 1, 1), xaxt = "n", yaxt = "n")
 image(1:16, 1:16, z, main = my_data[row, 1], col = CUSTOM_COLORS(256))
 
+
+#Tarea: realizar un algoritmo de clustering que realice un agrupamiento como el de la imagen
+tsne_scaled<-scale(tsne$Y) 
+
+head(tsne$Y)
+head(tsne_scaled)
+
+my_kmeans<-kmeans(tsne_scaled,centers = 10,nstart = 10)
+my_kmeans$cluster
+fviz_cluster(my_kmeans, data = tsne_scaled)
 
 #----------------------------------------------------------------------#
 #  _____   _                 _             ____    _   _   _____ 

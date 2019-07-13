@@ -18,6 +18,16 @@ if (!require("plotly")){install.packages("plotly",quiet = T) ; library("plotly")
 
 if (!require("RColorBrewer")){install.packages("RColorBrewer",verbose = F) ; library("RColorBrewer")}
 
+if (!require("tidyverse")){install.packages("tidyverse",quiet = T) ; library("tidyverse")} # data manipulation
+
+if (!require("cluster")){install.packages("cluster",quiet = T) ; library("cluster")} # clustering algorithms
+
+if (!require("factoextra")){install.packages("factoextra",quiet = T) ; library("factoextra")} # clustering algorithms & visualization
+
+if (!require("datasets")){install.packages("datasets",quiet = T) ; library("datasets")} 
+
+if (!require("gridExtra")){install.packages("gridExtra",quiet = T) ; library("gridExtra")} 
+
 #----------------------------------------------------------------------------------- #
 #  _____               _         ____                    __   _   _        
 # | ____|  _ __     __| |  _    |  _ \   _ __    ___    / _| (_) | |   ___ 
