@@ -5,7 +5,7 @@ En unsupervised learning no tenemos variable respuesta.
 Necesitamos agrupar registros que se parecen entre sí, aunque no me vaya a decir qué son realmente. 
 
 ## Tipos
-**Modelos para hacer clustering**
+**Algoritmo para hacer clustering**
 
 * K-means.
 * Hierarchical Clustering.
@@ -14,6 +14,10 @@ Necesitamos agrupar registros que se parecen entre sí, aunque no me vaya a deci
 **Algoritmos de reducción de dimensionalidad**
 ¡No son para hacer clustering, para eso están después los de arriba!
 Nos convierten un datset en otro. Un dataset de N filas y M columnas en uno con las mismas N filas pero sólo 2 ó 3 columnas. 
+
+Luego, ya usaríamos un K-means u otro algoritmo de clustering que podría hacerlo con mucha más facilidad. 
+
+Ejemplos de algoritmos de reducción de dimensionalidad:
 
 * Principal Component Analysis.
 * Singular Value Decomposition (u otras factorizaciones de matrices).
