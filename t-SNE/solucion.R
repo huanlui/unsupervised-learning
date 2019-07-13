@@ -50,6 +50,8 @@ data_to_plot<-as.data.frame(tsne3D$Y)
 
 
 #plot 3d usando libreria plotly
+# color: es cuantos colores voy a hacer. Lo saco de las etiquetas convertidas a factor. 
+# colors: (definido arriba). Colores diferentes cogidos de la función rainbow . 
 plot_ly(data_to_plot, x=~V1, y=~V2, z=~V3, color= as.factor(my_labels), colors = colors) %>%
   add_markers() %>%
   plotly::layout(scene = list(xaxis = list(title = 'Coordenada 1 t-SNE'),
