@@ -1,7 +1,7 @@
 # t-distributed Stochastic Neighbor Embedding
 
-Mucho más complicado pero mucho más potente que PCA. 
-
+* Recordemos que no es un algoritmo de clustering, sino de reducción de dimensionalidad. 
+* Mucho más complicado pero mucho más potente que PCA. 
 * Usa gradient-descent para reducir de muchas dimensions a 2 o 3. No más. 
 * Detecta relacionoes no lineales a diferencia de PCA. Por tanto, por ejemplo, para imágenes nos viene perfecto, porque es absurdo asumir linealidad. 
 * Esas dos dimensiones son creadas por él, no son las originales. Tengo un dataset completamente distinto. Es exploratoio .
@@ -10,7 +10,13 @@ Mucho más complicado pero mucho más potente que PCA.
 * t-SNE mapea los datos multidimensionales a un espacio dimensional inferior.
 * Después de este proceso, las variables de entrada ya no son identificables, y no puede hacerse ninguna inferencia basada únicamente en la salida del t-SNE. Por lo tanto, es principalmente una técnica de exploración y visualización de datos.
 
+Comparación entre PCA y t-SNE (2D):
+
 ![comparación](https://miro.medium.com/max/736/1*LeOHKmUFha2r3QJ7riR1zg.png)
+
+Vista del ejercicio para algoritmo en 3D
+
+![3d](media/3d.PNG)
 
 A fondo: https://lvdmaaten.github.io/
 Más ligero: https://towardsdatascience.com/visualising-high-dimensional-datasets-using-pca-and-t-sne-in-python-8ef87e7915b
